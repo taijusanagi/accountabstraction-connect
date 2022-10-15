@@ -7,7 +7,6 @@ import { EntryPoint, EntryPoint__factory, UserOperationStruct } from "@account-a
 import { SimpleWalletAPI } from "@account-abstraction/sdk";
 import { rethrowError } from "@account-abstraction/utils";
 import { SampleRecipient, SampleRecipient__factory } from "@account-abstraction/utils/dist/src/types";
-import { Hop } from "@hop-protocol/sdk";
 import { anyValue } from "@nomicfoundation/hardhat-chai-matchers/withArgs";
 import { SignerWithAddress } from "@nomiclabs/hardhat-ethers/signers";
 import { expect } from "chai";
@@ -134,13 +133,6 @@ describe("AccountAbstractionWallet", () => {
         const calculatedAddress = await factory.getCreate2Address(entryPoint.address, owner.address, salt);
         expect(walletAddress).to.eq(calculatedAddress);
       });
-    });
-  });
-
-  describe("Hop Integration", () => {
-    it("should work", async function () {
-      const hop = new Hop("goerli");
-      console.log(hop);
     });
   });
 });
